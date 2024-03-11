@@ -1,0 +1,8 @@
+# change to virtual (local) environment 
+source .env/bin/activate
+
+# create a Django migration for an app
+python3 manage.py  makemigrations <app_name>
+
+# run all Django migration within the project
+python3 manage.py migrate
