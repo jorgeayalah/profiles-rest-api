@@ -4,6 +4,7 @@ from rest_framework import status #for using the HTTP codes
 from rest_framework import viewsets
 
 from profiles_api import serializers
+from profiles_api import models
 
 # When to use an APIView?
 # - Need full control over the logic
@@ -107,4 +108,10 @@ class HelloViewSet(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         """Handle removing an  object"""
         return Response({'http_method': 'DELETE'})
-    
+
+
+#   Theres a difference between using ViewSet and ModelViewSet, the second already has many funcionalities for working with models
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating profiles"""
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()

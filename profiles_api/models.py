@@ -10,6 +10,7 @@ class UserProfileManager(BaseUserManager):
         """Create a new user profile"""
         if not email:
             raise ValueError('Users must have an email address')
+        
         #Standarize second half of email to nonsensitive
         email = self.normalize_email(email)
         user = self.model(email=email, name=name)
