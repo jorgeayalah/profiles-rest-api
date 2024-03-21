@@ -35,3 +35,18 @@ class HelloApiView(APIView):
                 serializer.errors, 
                 status=status.HTTP_400_BAD_REQUEST  # instead of just 400 so we can see what the request means
                 )
+        
+    def put(self, request, pk=None):
+        """Handle updating (replacing) an entire object"""
+        # when using put, you typically do it to a specific url primary key, thats why is in the parameters
+        return Response({'method': 'PUT'})
+
+    def patch(self, request, pk=None):
+        """Hanfle a partial update of an object"""
+        # to only update the fields provided in the request, uses Raw data as input to privide a JSON dict
+        return Response({'method': 'PATCH'})
+
+    def delete(self, request, pk=None):
+        """Deletes an object"""
+        return Response({'method': 'DELETE'})
+
