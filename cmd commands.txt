@@ -1,8 +1,13 @@
 # change to virtual (local) environment 
 source .env/bin/activate
 
+"""MIGRATIONS"""
 # create a Django migration for an app
 python3 manage.py  makemigrations <app_name>
 
 # run all Django migration within the project
 python3 manage.py migrate
+
+--
+# run a server at port
+python3 manage.py runserver 0.0.0.0:{PORT}
