@@ -21,7 +21,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     # how to override create and update functions to hash password
     def create(self, validated_data):
-        """Create and return a new user"""
+        """Creates and return a new user"""
         user = models.UserProfile.objects.create_user(
             email=validated_data['email'],
             name=validated_data['name'],
@@ -31,9 +31,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
         return user
     
     def update(self, instance, validated_data):
-        """Handle updating user account"""
+        """Handles updating user account"""
         if 'password' in validated_data:
             password = validated_data.pop('password')
             instance.set_password(password)
 
         return super().update(instance, validated_data)
+    
+    
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """Serialzies profile feed items"""
+
+    class Meta:
+        model = models.ProfileFeedItem
+        # out of the 4 following, only 'status_text' should be ediable by user
+        fields = ('id', 'user_profile', 'status_text', 'created_on')
+        extra_kwargs = {'user_profile': {'read_only': True}}    # to link the user via auth only
