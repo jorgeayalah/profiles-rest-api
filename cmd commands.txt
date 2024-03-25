@@ -17,3 +17,9 @@ cat ~/.ssh/id_rsa.pub
 
 # make shell cmds executable
 chmod +x deploy/*.sh
+
+# connect to AWS server
+ssh ubuntu@ec2-CHANGE-ME.compute.amazonaws.com
+
+# run setup .sh file
+curl -sL https://raw.githubusercontent.com/CHANGE-ME/setup.sh | sudo bash -
