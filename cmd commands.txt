@@ -11,3 +11,9 @@ python3 manage.py migrate
 --
 # run a server at port
 python3 manage.py runserver 0.0.0.0:{PORT}
+
+# show the public ssh
+cat ~/.ssh/id_rsa.pub
+
+# make shell cmds executable
+chmod +x deploy/*.sh
