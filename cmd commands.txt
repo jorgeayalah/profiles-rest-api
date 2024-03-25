@@ -23,3 +23,6 @@ ssh ubuntu@ec2-CHANGE-ME.compute.amazonaws.com
 
 # run setup .sh file
 curl -sL https://raw.githubusercontent.com/CHANGE-ME/setup.sh | sudo bash -
+
+#run update.sh file
+sudo sh ./deploy/update.sh
